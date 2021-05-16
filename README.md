@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This is a code repository for the web application that uses the IGDB API documentation: https://jsonplaceholder.typicode.com/
+This is a code repository for the web application that uses the jsonplaceholder API documentation: https://jsonplaceholder.typicode.com/
 
 Using React. The App is called "JSON-BLOG".
 
