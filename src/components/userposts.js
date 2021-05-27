@@ -8,12 +8,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useHistory } from "react-router-dom";
 
 const Userposts = () => {
 
   let { id } = useParams();
   const [posts, setPosts] = useState();
   const [author, setAuthor] = useState();
+  let history = useHistory();
 
   useEffect(() => {
     const getData = async () => {
@@ -21,7 +23,9 @@ const Userposts = () => {
 
       if (resp.data) {
         const filterbyuser = resp.data.filter( p => parseInt(p.userId) === parseInt(id));
-
+        if (filterbyuser.length === 0 ) {
+          history.push('/404');
+        }
         setPosts(filterbyuser);
       }
     }

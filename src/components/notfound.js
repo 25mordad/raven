@@ -7,7 +7,7 @@ const Notfound = () => {
   return (
     <Container className ="">
     <a href="/">
-             <img   class="img-fluid" alt="Responsive notfound"  src={notfound} /> </a>
+             <img   className="img-fluid" alt="Responsive notfound"  src={notfound} /> </a>
   </Container>
   );
 }

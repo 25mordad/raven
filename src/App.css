@@ -50,3 +50,9 @@ a:active {
   color: rgb(34, 8, 182);
   text-decoration: none;
 }
+.red {
+  color: #ad2424;
+}
+.black {
+  color: black;
+}

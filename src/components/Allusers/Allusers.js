@@ -9,13 +9,18 @@ import Col from 'react-bootstrap/Col';
 
 const Allusers = () => {
   const [users, setUsers] = useState();
+  const [networkerror, setNetworkerror] = useState(0);
 
   useEffect(() => {
 
     const getData = async () => {
-      const resp = await Api("https://jsonplaceholder.typicode.com/users")
-
-      setUsers(resp.data);
+      try {
+        const resp = await Api("https://jsonplaceholder.typicode.com/users")
+        setUsers(resp.data);
+      } catch (e) {
+        console.log(e);
+        setNetworkerror(1);
+      }
     }
     getData();
 
@@ -24,9 +29,12 @@ const Allusers = () => {
   return (
 
     (!users)?
-    <Spinner  className="p-3 m-5" animation="border" role="status">
-    <span className="sr-only">Loading...</span>
-    </Spinner>:
+    <>
+    {networkerror ? <div className="red m-4 p-4" ><i className="fa fa-ban fa-5x "/><h2>Network Error </h2> <p className="black">Please try again later </p></div> : <Spinner  className="p-3 m-5" animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>}
+
+    </>:
       <Container >
          <Row  className=" d-flex flex-row"  lg={2}>
           {users.map( (u) =>

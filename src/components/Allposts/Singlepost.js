@@ -5,6 +5,7 @@ import Postcomments from './Postcomments/Postcomments';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
+import { useHistory } from "react-router-dom";
 
 
 const Singlepost = () => {
@@ -14,21 +15,29 @@ const Singlepost = () => {
   const [users, setUsers] = useState();
   const [author, setAuthor] = useState();
   // const [comments, setComments] = useState();
+  let history = useHistory();
 
   useEffect(() => {
   //
   //
     const getData = async () => {
-      const resp = await Api("https://jsonplaceholder.typicode.com/posts/"+id)
-     
-      setPost(resp.data);
+      try {
+        const resp = await Api("https://jsonplaceholder.typicode.com/posts/"+id)
+        setPost(resp.data);
+
+      } catch (e) {
+        console.log(e);
+        history.push('/404');
+
+      }
+
     }
     const getUsers = async () => {
       const allUsers = await Api("https://jsonplaceholder.typicode.com/users")
-      
+
       setUsers(allUsers.data);
     }
-    
+
     getData();
     getUsers();
 
@@ -37,9 +46,9 @@ const Singlepost = () => {
 
   useEffect(() => {
     if (post && users) {
-     
+
       const aut = users.filter( u => u.id === post.userId );
-     
+
       setAuthor(aut[0]);
 
     }
