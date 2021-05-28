@@ -41,7 +41,7 @@ const Singlepost = () => {
     getData();
     getUsers();
 
-  }, [id]);
+  }, [id,history]);
 
 
   useEffect(() => {

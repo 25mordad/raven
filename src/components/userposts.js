@@ -40,7 +40,7 @@ const Userposts = () => {
     getUser();
     getData();
 
-  }, [id]);
+  }, [id,history]);
 
   return (
       (!posts)?

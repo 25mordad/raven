@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
 import 'font-awesome/css/font-awesome.min.css';
-import Button from 'react-bootstrap/Button'
 
 const Allposts = () => {
   const [posts, setPosts] = useState();
